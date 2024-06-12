@@ -1,0 +1,22 @@
+.file-upload-button {
+    margin-top: 20px;
+}
+
+.custom-file-upload {
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#file-upload {
+    display: none;
+}
+
+.custom-file-upload:hover {
+    background-color: rgb(252, 252, 252);
+}
