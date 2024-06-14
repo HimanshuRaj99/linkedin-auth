@@ -1,17 +1,41 @@
 // SecondPage.js
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from "axios";
 import { useLocation } from 'react-router-dom';
 
 const LinkedInProfile = () => {
 const location = useLocation();
+
 const queryParams = new URLSearchParams(location.search);   
-const code = queryParams.get('code');
+const response_code = queryParams.get('code');
+
+  axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+  grant_type: 'authorization_code',
+  code: response_code,
+  redirect_uri: 'https://linkedin-auth-six.vercel.app/LinkedInProfile',
+  client_id: '860qsgpwiuukok',
+  client_secret: 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ==', 
+}).then((res) => {console.log(res)});
+
+// const fun = async () => {
+//   const response_code = await queryParams.get('code');
+
+//   axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+//   grant_type: 'authorization_code',
+//   code: response_code,
+//   redirect_uri: 'https://linkedin-auth-six.vercel.app/LinkedInProfile',
+//   client_id: '860qsgpwiuukok',
+//   client_secret: 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ==', 
+// }).then((res) => {console.log(res)});
+// useEffect(()=> {fun}, []);
+// }
   return (
     
     <div>
       <h1>User Profile</h1>
       <a href="/">Go to Home Page</a>
-      <div>Current URL is {code}</div>
+      <div>Current URL is {response_code}</div>
+      {/* <div>response: {res}</div> */}
     </div>
 
   );
