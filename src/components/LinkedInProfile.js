@@ -6,12 +6,13 @@ import { useLocation } from 'react-router-dom';
 
 const LinkedInProfile = () => {
 const location = useLocation();
-const [token, setValue] = useState('')
+const [token, setToken] = useState(null);
+const [userData, setUserData] = useState(null);
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
 // const data=[]
-const fetchAccessToken = async () => {
+const generateToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -32,35 +33,68 @@ const fetchAccessToken = async () => {
         });
          const data = await response.json();
         console.log('Response data:', data);
-        setValue(data.access_token);
+        const newToken = data.access_token;
+        setToken(newToken);
       } catch (error) {
         console.error('Error fetching access token:', error);
       }
     };
-    //console.log(data)
-    //console.log(data.access_token)
-    fetchAccessToken();
-    console.log('token val : ',token)
 
-const profileData = async() => {
-      const url = 'https://api.linkedin.com/v2/me';
-      const headers = {
-        'Authorization': 'Bearer '+ token,
-      };
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: headers,
-         
-        });
-        const data = await response;
-        console.log('User Data:', data);
-      } catch (error) {
-        console.error('Error fetching User Details:', error);
-      }
+  const fetchProfileData = (accessToken) => {
+    const url = 'https://api.linkedin.com/v2/me';
+    const headers = {
+      'Authorization': `Bearer ${accessToken}`,
     };
 
-    profileData();
+    fetch(url, {
+      method: 'GET',
+      headers: headers,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('User Data:', data);
+      setUserData(data); // Update state with fetched data
+    })
+    .catch(error => {
+      console.error('Error fetching user data:', error);
+    });
+  };
+
+  useEffect(() => {
+    // Generate token on component mount
+    generateToken();
+  }, []);
+
+  useEffect(() => {
+    // Fetch profile data once the token is generated
+    if (token) {
+      fetchProfileData(token);
+    }
+  }, [token]);
+    //console.log(data)
+    //console.log(data.access_token)
+//     fetchAccessToken();
+//     console.log('token val : ',token)
+
+// const profileData = async() => {
+//       const url = 'https://api.linkedin.com/v2/me';
+//       const headers = {
+//         'Authorization': 'Bearer '+ token,
+//       };
+//       try {
+//         const response = await fetch(url, {
+//           method: 'GET',
+//           headers: headers,
+         
+//         });
+//         const data = await response;
+//         console.log('User Data:', data);
+//       } catch (error) {
+//         console.error('Error fetching User Details:', error);
+//       }
+//     };
+
+//     profileData();
 
 // const data = {   
 //   grant_type: 'authorization_code',
