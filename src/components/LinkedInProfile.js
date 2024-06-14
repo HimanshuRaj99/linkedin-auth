@@ -9,7 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
-console.log("code ==== " ,response_code)
+console.log("code ====|| " ,response_code)
 
 const fetchAccessToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
@@ -20,8 +20,8 @@ const fetchAccessToken = async () => {
         'grant_type': 'authorization_code',
         'code': response_code,
         'redirect_uri': 'https://linkedin-auth-six.vercel.app/LinkedInProfile',
-        'client_id': '860qsukok',
-        'client_secret': 'WPL_E135JdGlVQ=='
+        'client_id': '860qsgpwiuukok',
+        'client_secret': 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='
       });
 
       try {
