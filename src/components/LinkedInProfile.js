@@ -8,7 +8,7 @@ const LinkedInProfile = () => {
     <div>
       <h1>User Profile</h1>
       <a href="/">Go to Home Page</a>
-      <div>Current URL is {location.pathname}</div>
+      <div>Current URL is {location}</div>
     </div>
 
   );
