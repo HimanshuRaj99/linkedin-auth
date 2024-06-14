@@ -11,11 +11,11 @@ const queryParams = new URLSearchParams(location.search);
 const response_code = queryParams.get('code');
 console.log(response_code)
 const data = {   
-  'grant_type': 'authorization_code',
-  'code': response_code,
-  'redirect_uri': 'https%3A%2F%2Flinkedin-auth-six.vercel.app%2FLinkedInProfile',
-  'client_id': '860qsgpwiuukok',
-  'client_secret': 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='}
+  grant_type: 'authorization_code',
+  code: response_code,
+  redirect_uri: 'https%3A%2F%2Flinkedin-auth-six.vercel.app%2FLinkedInProfile',
+  client_id: '860qsgpwiuukok',
+  client_secret: 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='}
 
 const options = {
   method: 'POST',
@@ -24,7 +24,7 @@ const options = {
   url : 'https://www.linkedin.com/oauth/v2/accessToken',
 };
 axios(options).then((res) => res.json())
-.then((data) => {console.log(data)});
+.then((data) => {console.log("my response print", data)});
 //   axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
 //   grant_type: 'authorization_code',
 //   code: response_code,
