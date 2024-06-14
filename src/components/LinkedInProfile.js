@@ -10,7 +10,7 @@ const location = useLocation();
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
-const data=[]
+// const data=[]
 const fetchAccessToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
       const headers = {
@@ -30,14 +30,14 @@ const fetchAccessToken = async () => {
           headers: headers,
           body: body.toString()
         });
-         data = await response.json();
+         const data = await response.json();
         console.log('Access Token:', data);
       } catch (error) {
         console.error('Error fetching access token:', error);
       }
     };
-    console.log(data)
-    console.log(data.access_token)
+    //console.log(data)
+    //console.log(data.access_token)
     fetchAccessToken();
 
 // const profileData = async () => {
