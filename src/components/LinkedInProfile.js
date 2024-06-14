@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const LinkedInProfile = () => {
 const location = useLocation();
-let token
+const token = 0
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
