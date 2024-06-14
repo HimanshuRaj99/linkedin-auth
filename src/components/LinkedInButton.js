@@ -7,11 +7,12 @@ const LinkedInButton = () => {
   };
 
   return (
-  
+    <div className='Home-header'>
+    <div>Share your information</div>
     <button className="blue-button" onClick={handleClick}>
       upload via Linkedin
     </button>
-    
+    </div>
   );
 };
 

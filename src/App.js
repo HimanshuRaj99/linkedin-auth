@@ -1,17 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import LinkedInButton from './components/LinkedInButton';
+import LinkedInProfile from './components/LinkedInProfile';
 import './App.css';
-import LinkedInButton from './LinkedInButton';
-import FileUploadButton from './FileUploadButton';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Please, share your info</h1>
-        <FileUploadButton />
-        <LinkedInButton />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LinkedInButton/>} />
+          <Route path="/LinkedInProfile" element={<LinkedInProfile/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
