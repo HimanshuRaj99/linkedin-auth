@@ -9,7 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
-console.log("code != " ,response_code)
+console.log("code ==== " ,response_code)
 
 const fetchAccessToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
