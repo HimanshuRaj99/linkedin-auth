@@ -11,7 +11,7 @@ const queryParams = new URLSearchParams(location.search);
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
 // const data=[]
-const fetchAccessToken = async () => {
+const fetchAccessToken =  () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -25,12 +25,12 @@ const fetchAccessToken = async () => {
       });
 
       try {
-        const response = await fetch(url, {
+        const response =  fetch(url, {
           method: 'POST',
           headers: headers,
           body: body.toString()
         });
-         const data = await response.json();
+         const data =  response.json();
         console.log('Response data:', data);
         setValue(data.access_token);
       } catch (error) {
@@ -41,21 +41,21 @@ const fetchAccessToken = async () => {
     //console.log(data.access_token)
     fetchAccessToken();
     console.log('token val : ',token)
-const profileData = async () => {
+const profileData = () => {
       const url = 'https://api.linkedin.com/v2/me';
       const headers = {
         'Authorization': 'Bearer '+ token.access_token,
       };
       try {
-        const response = await fetch(url, {
+        const response = fetch(url, {
           method: 'GET',
           headers: headers,
          
         });
-        const data = await response.json();
+        const data = response.json();
         console.log('User Data:', data);
       } catch (error) {
-        console.error('Error fetching access token:', error);
+        console.error('Error fetching User Details:', error);
       }
     };
 
