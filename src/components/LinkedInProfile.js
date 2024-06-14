@@ -44,7 +44,7 @@ const fetchAccessToken = async () => {
 const profileData = () => {
       const url = 'https://api.linkedin.com/v2/me';
       const headers = {
-        'Authorization': 'Bearer '+ token.access_token,
+        'Authorization': 'Bearer '+ token,
       };
       try {
         const response = fetch(url, {
