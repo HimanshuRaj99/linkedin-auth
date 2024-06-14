@@ -40,7 +40,7 @@ const fetchAccessToken = async () => {
     //console.log(data)
     //console.log(data.access_token)
     fetchAccessToken();
-    console.log(token)
+    console.log('token val : ',token)
 const profileData = async () => {
       const url = 'https://api.linkedin.com/v2/me';
       const headers = {
