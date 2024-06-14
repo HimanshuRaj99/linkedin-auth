@@ -9,7 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
-console.log("code ====|| " ,response_code)
+console.log("code ====||-- " ,response_code)
 const data=[]
 const fetchAccessToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
@@ -40,25 +40,25 @@ const fetchAccessToken = async () => {
     console.log(data.access_token)
     fetchAccessToken();
 
-const profileData = async () => {
-      const url = 'https://api.linkedin.com/v2/me';
-      const headers = {
-        'Authorization': 'Bearer '+ data.access_token,
-      };
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: headers,
+// const profileData = async () => {
+//       const url = 'https://api.linkedin.com/v2/me';
+//       const headers = {
+//         'Authorization': 'Bearer '+ data.access_token,
+//       };
+//       try {
+//         const response = await fetch(url, {
+//           method: 'GET',
+//           headers: headers,
          
-        });
-        const data = await response.json();
-        console.log('Access Token:', data);
-      } catch (error) {
-        console.error('Error fetching access token:', error);
-      }
-    };
+//         });
+//         const data = await response.json();
+//         console.log('Access Token:', data);
+//       } catch (error) {
+//         console.error('Error fetching access token:', error);
+//       }
+//     };
 
-    profileData();
+    // profileData();
 
 // const data = {   
 //   grant_type: 'authorization_code',
