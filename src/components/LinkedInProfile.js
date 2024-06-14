@@ -31,6 +31,7 @@ const fetchAccessToken = async () => {
           body: body.toString()
         });
          const data = await response.json();
+        console.log('Access Token:', data);
         console.log('Access Token:', data.access_token);
       } catch (error) {
         console.error('Error fetching access token:', error);
