@@ -10,23 +10,56 @@ const location = useLocation();
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
 console.log("code != " ,response_code)
-const data = {   
-  grant_type: 'authorization_code',
-  code: response_code,
-  redirect_uri: 'https%3A%2F%2Flinkedin-auth-six.vercel.app%2FLinkedInProfile',
-  client_id: '860qsgpwiuukok',
-  client_secret: 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='}
 
-const options = {
-  method: 'POST',
-  headers: { 'content-type': 'application/x-www-form-urlencoded',
-              'Access-Control-Allow-Origin':"*"
-  },
-  data: qs.stringify(data),
-  url : 'https://www.linkedin.com/oauth/v2/accessToken',
-};
-axios(options).then((res) => res.json())
-.then((data) => {console.log("my response print", data)});
+const fetchAccessToken = async () => {
+      const url = 'https://www.linkedin.com/oauth/v2/accessToken';
+      const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+      const body = new URLSearchParams({
+        'grant_type': 'authorization_code',
+        'code': response_code,
+        'redirect_uri': 'https://linkedin-auth-six.vercel.app/LinkedInProfile',
+        'client_id': '860qsukok',
+        'client_secret': 'WPL_E135JdGlVQ=='
+      });
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: headers,
+          body: body.toString()
+        });
+        const data = await response.json();
+        console.log('Access Token:', data);
+      } catch (error) {
+        console.error('Error fetching access token:', error);
+      }
+    };
+
+    fetchAccessToken();
+
+
+
+// const data = {   
+//   grant_type: 'authorization_code',
+//   code: response_code,
+//   redirect_uri: 'https%3A%2F%2Flinkedin-auth-six.vercel.app%2FLinkedInProfile',
+//   client_id: '860qsgpwiuukok',
+//   client_secret: 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='}
+
+// const options = {
+//   method: 'POST',
+//   headers: { 'content-type': 'application/x-www-form-urlencoded',
+//               'Access-Control-Allow-Origin':"*"
+//   },
+//   data: qs.stringify(data),
+//   url : 'https://www.linkedin.com/oauth/v2/accessToken',
+// };
+// axios(options).then((res) => res.json())
+// .then((data) => {console.log("my response print", data)});
+
+
 //   axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
 //   grant_type: 'authorization_code',
 //   code: response_code,
