@@ -52,7 +52,7 @@ const profileData = () => {
           headers: headers,
          
         });
-        const data = response.json();
+        const data = response;
         console.log('User Data:', data);
       } catch (error) {
         console.error('Error fetching User Details:', error);
