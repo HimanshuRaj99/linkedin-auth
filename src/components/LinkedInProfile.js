@@ -9,6 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
+console.log(response_code)
 const data = {   
   'grant_type': 'authorization_code',
   'code': response_code,
