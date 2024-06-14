@@ -41,18 +41,19 @@ const fetchAccessToken = async () => {
     //console.log(data.access_token)
     fetchAccessToken();
     console.log('token val : ',token)
-const profileData = () => {
+
+const profileData = async() => {
       const url = 'https://api.linkedin.com/v2/me';
       const headers = {
         'Authorization': 'Bearer '+ token,
       };
       try {
-        const response = fetch(url, {
+        const response = await fetch(url, {
           method: 'GET',
           headers: headers,
          
         });
-        const data = response;
+        const data = await response;
         console.log('User Data:', data);
       } catch (error) {
         console.error('Error fetching User Details:', error);
