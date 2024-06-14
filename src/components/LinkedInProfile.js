@@ -11,7 +11,7 @@ const queryParams = new URLSearchParams(location.search);
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
 // const data=[]
-const fetchAccessToken =  () => {
+const fetchAccessToken = async () => {
       const url = 'https://www.linkedin.com/oauth/v2/accessToken';
       const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -25,12 +25,12 @@ const fetchAccessToken =  () => {
       });
 
       try {
-        const response =  fetch(url, {
+        const response = await fetch(url, {
           method: 'POST',
           headers: headers,
           body: body.toString()
         });
-         const data =  response.json();
+         const data = await response.json();
         console.log('Response data:', data);
         setValue(data.access_token);
       } catch (error) {
