@@ -1,12 +1,12 @@
 // SecondPage.js
-import React, { useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 import qs from 'qs';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 
 const LinkedInProfile = () => {
 const location = useLocation();
-const token = 0
+const [token, setValue] = useState('')
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
 console.log("code ====||-- " ,response_code)
@@ -32,7 +32,7 @@ const fetchAccessToken = async () => {
         });
          const data = await response.json();
         console.log('Response data:', data);
-        token = data.access_token;
+        setValue(data.access_token);
       } catch (error) {
         console.error('Error fetching access token:', error);
       }
