@@ -19,7 +19,9 @@ const data = {
 
 const options = {
   method: 'POST',
-  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  headers: { 'content-type': 'application/x-www-form-urlencoded' ,
+             'Access-Control-Allow-Origin': 'https://developer.mozilla.org'
+  },
   data: qs.stringify(data),
   url : 'https://www.linkedin.com/oauth/v2/accessToken',
 };
