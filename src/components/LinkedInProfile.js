@@ -9,7 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
-console.log("code : " ,response_code)
+console.log("code == " ,response_code)
 const data = {   
   grant_type: 'authorization_code',
   code: response_code,
@@ -19,11 +19,10 @@ const data = {
 
 const options = {
   method: 'POST',
-  headers: { 'content-type': 'application/x-www-form-urlencoded' ,
-             'Access-Control-Allow-Origin': 'https://developer.mozilla.org'
+  headers: { 'content-type': 'application/x-www-form-urlencoded'
   },
   data: qs.stringify(data),
-  url : 'https://www.linkedin.com/oauth/v2/accessToken',
+  url : 'https://cors-anywhere.herokuapp.com/https://www.linkedin.com/oauth/v2/accessToken',
 };
 axios(options).then((res) => res.json())
 .then((data) => {console.log("my response print", data)});
