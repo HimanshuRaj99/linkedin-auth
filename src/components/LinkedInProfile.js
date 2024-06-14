@@ -39,7 +39,7 @@ const generateToken = async () => {
         console.error('Error fetching access token:', error);
       }
     };
-
+  console.log(token);
   const fetchProfileData = (accessToken) => {
     const url = 'https://api.linkedin.com/v2/me';
     const headers = {
