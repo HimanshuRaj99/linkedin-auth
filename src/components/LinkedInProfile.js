@@ -9,7 +9,7 @@ const location = useLocation();
 
 const queryParams = new URLSearchParams(location.search);   
 const response_code = queryParams.get('code');
-console.log("code ?= " ,response_code)
+console.log("code != " ,response_code)
 const data = {   
   grant_type: 'authorization_code',
   code: response_code,
@@ -19,7 +19,8 @@ const data = {
 
 const options = {
   method: 'POST',
-  headers: { 'content-type': 'application/x-www-form-urlencoded'
+  headers: { 'content-type': 'application/x-www-form-urlencoded',
+              'Access-Control-Allow-Origin':"*"
   },
   data: qs.stringify(data),
   url : 'https://www.linkedin.com/oauth/v2/accessToken',
