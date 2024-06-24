@@ -45,7 +45,7 @@ const generateToken = async () => {
     const headers = {
       'Authorization': `Bearer ${accessToken}`,
     };
-    console.log(headers);
+    console.log('get header val : ',headers);
 
     fetch(url, {
       method: 'GET',
