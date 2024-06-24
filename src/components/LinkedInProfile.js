@@ -41,7 +41,7 @@ const generateToken = async () => {
     };
   console.log('token val : ',token);
   const fetchProfileData = (accessToken) => {
-    const url = 'https://api.linkedin.com/v2/me';
+    const url = 'https://api.linkedin.com/v2/userinfo';
     const headers = {
       'Authorization': `Bearer ${accessToken}`,
     };
