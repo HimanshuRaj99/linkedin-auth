@@ -44,6 +44,7 @@ const generateToken = async () => {
     const url = 'https://api.linkedin.com/v2/me';
     const headers = {
       'Authorization': `Bearer ${accessToken}`,
+      
     };
 
     fetch(url, {
