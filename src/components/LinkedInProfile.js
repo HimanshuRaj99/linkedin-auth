@@ -20,7 +20,7 @@ const generateToken = async () => {
       const body = new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': response_code,
-        'redirect_uri': 'https://linkedin-auth-six.vercel.app/LinkedInProfile',
+        'redirect_uri': 'https%3A%2F%2Flinkedin-auth-six.vercel.app%2FLinkedInProfile',
         'client_id': '860qsgpwiuukok',
         'client_secret': 'WPL_AP1.8zbjSGTE135JdGYX.C7hlVQ=='
       });
@@ -41,7 +41,7 @@ const generateToken = async () => {
     };
   console.log('token val : ',token);
   const fetchProfileData = (accessToken) => {
-    const url = 'https://api.linkedin.com/v2/userinfo';
+    const url = 'https://api.linkedin.com/userinfo';
     const headers = {
       'Authorization': `Bearer ${accessToken}`,
     };
